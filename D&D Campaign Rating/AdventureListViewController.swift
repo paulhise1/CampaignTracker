@@ -14,17 +14,18 @@ struct Adventure: Codable {
     let characterType: String
     let note: String
     let rating: Float
+    let date: String
 }
 
 class AdventureListViewController: UIViewController, InputFormDelegate, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var adventureList: UITableView!
+    @IBOutlet weak var adventureTableView: UITableView!
     @IBOutlet weak var addNewButton: UIButton!
     
     let adventureURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("adventure.plist")
     let adventureCellId = "adventureCell"
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
        configureTableView()
@@ -41,6 +42,7 @@ class AdventureListViewController: UIViewController, InputFormDelegate, UITableV
 
     func logAdventure(adventure: Adventure) {
       saveAdventureToPlist(adventure: adventure)
+        adventureTableView.reloadData()
     }
     
     func getAdventures() -> [Adventure] {
@@ -76,21 +78,23 @@ class AdventureListViewController: UIViewController, InputFormDelegate, UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = adventureList.dequeueReusableCell(withIdentifier: adventureCellId, for: indexPath) as? AdventureCell else {
+        guard let cell = adventureTableView.dequeueReusableCell(withIdentifier: adventureCellId, for: indexPath) as? AdventureCell else {
             return UITableViewCell()
         }
-        let date = String(describing: Date())
         let adventure = getAdventures()[indexPath.row]
-        cell.configure(date: date, adventure: adventure.adventureStory)
+        cell.configure(date: adventure.date, adventure: adventure.adventureStory)
         return cell
     }
     
     func configureTableView() {
         let xib = UINib(nibName: "AdventureCell", bundle: nil)
-        adventureList.register(xib, forCellReuseIdentifier: adventureCellId)
-        adventureList.dataSource = self
-        adventureList.delegate = self
+        adventureTableView.register(xib, forCellReuseIdentifier: adventureCellId)
+        adventureTableView.dataSource = self
+        adventureTableView.delegate = self
+        
+      
     }
 }
+
 
 

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A3E3C94A25C503F800C6671C /* AdventureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E3C94925C503F800C6671C /* AdventureCell.swift */; };
+		A3E3C94D25C5149400C6671C /* extensionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E3C94C25C5149400C6671C /* extensionHelper.swift */; };
 		A3FFCF2D25BFADE00094F926 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FFCF2C25BFADE00094F926 /* AppDelegate.swift */; };
 		A3FFCF2F25BFADE00094F926 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FFCF2E25BFADE00094F926 /* SceneDelegate.swift */; };
 		A3FFCF3125BFADE00094F926 /* AdventureListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FFCF3025BFADE00094F926 /* AdventureListViewController.swift */; };
@@ -14,11 +16,12 @@
 		A3FFCF3625BFADE20094F926 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3FFCF3525BFADE20094F926 /* Assets.xcassets */; };
 		A3FFCF3925BFADE20094F926 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3FFCF3725BFADE20094F926 /* LaunchScreen.storyboard */; };
 		A3FFCF4325BFBD360094F926 /* AdventureInputFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FFCF4225BFBD360094F926 /* AdventureInputFormViewController.swift */; };
-		AA0D56BB25C4F0F2008B246E /* AdventureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0D56BA25C4F0F2008B246E /* AdventureCell.swift */; };
 		AA0D56BF25C4F79C008B246E /* AdventureCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA0D56BE25C4F79C008B246E /* AdventureCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A3E3C94925C503F800C6671C /* AdventureCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdventureCell.swift; sourceTree = "<group>"; };
+		A3E3C94C25C5149400C6671C /* extensionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensionHelper.swift; sourceTree = "<group>"; };
 		A3FFCF2925BFADE00094F926 /* D&D Campaign Rating.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "D&D Campaign Rating.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3FFCF2C25BFADE00094F926 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A3FFCF2E25BFADE00094F926 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -28,7 +31,6 @@
 		A3FFCF3825BFADE20094F926 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A3FFCF3A25BFADE20094F926 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A3FFCF4225BFBD360094F926 /* AdventureInputFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdventureInputFormViewController.swift; sourceTree = "<group>"; };
-		AA0D56BA25C4F0F2008B246E /* AdventureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdventureCell.swift; sourceTree = "<group>"; };
 		AA0D56BE25C4F79C008B246E /* AdventureCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdventureCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -65,13 +67,14 @@
 				A3FFCF2C25BFADE00094F926 /* AppDelegate.swift */,
 				A3FFCF2E25BFADE00094F926 /* SceneDelegate.swift */,
 				A3FFCF3025BFADE00094F926 /* AdventureListViewController.swift */,
-				AA0D56BA25C4F0F2008B246E /* AdventureCell.swift */,
+				A3E3C94925C503F800C6671C /* AdventureCell.swift */,
 				A3FFCF4225BFBD360094F926 /* AdventureInputFormViewController.swift */,
 				A3FFCF3225BFADE00094F926 /* Main.storyboard */,
 				A3FFCF3525BFADE20094F926 /* Assets.xcassets */,
 				A3FFCF3725BFADE20094F926 /* LaunchScreen.storyboard */,
 				A3FFCF3A25BFADE20094F926 /* Info.plist */,
 				AA0D56BE25C4F79C008B246E /* AdventureCell.xib */,
+				A3E3C94C25C5149400C6671C /* extensionHelper.swift */,
 			);
 			path = "D&D Campaign Rating";
 			sourceTree = "<group>";
@@ -149,9 +152,10 @@
 			files = (
 				A3FFCF3125BFADE00094F926 /* AdventureListViewController.swift in Sources */,
 				A3FFCF2D25BFADE00094F926 /* AppDelegate.swift in Sources */,
+				A3E3C94A25C503F800C6671C /* AdventureCell.swift in Sources */,
 				A3FFCF4325BFBD360094F926 /* AdventureInputFormViewController.swift in Sources */,
-				AA0D56BB25C4F0F2008B246E /* AdventureCell.swift in Sources */,
 				A3FFCF2F25BFADE00094F926 /* SceneDelegate.swift in Sources */,
+				A3E3C94D25C5149400C6671C /* extensionHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

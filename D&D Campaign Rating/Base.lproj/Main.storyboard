@@ -62,7 +62,7 @@
                     </view>
                     <connections>
                         <outlet property="addNewButton" destination="V46-0B-XQP" id="4sx-Uv-yAu"/>
-                        <outlet property="adventureList" destination="cnf-iL-AcD" id="7g1-La-qIC"/>
+                        <outlet property="adventureTableView" destination="cnf-iL-AcD" id="7g1-La-qIC"/>
                         <outlet property="titleLabel" destination="Jun-1i-KXs" id="EZ2-xF-70z"/>
                     </connections>
                 </viewController>
@@ -233,7 +233,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0AJ-XU-Mgg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="711.59420289855075" y="16.071428571428569"/>
+            <point key="canvasLocation" x="4" y="42"/>
         </scene>
     </scenes>
     <resources>
