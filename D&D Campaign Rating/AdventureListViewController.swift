@@ -19,7 +19,7 @@ struct Adventure: Codable {
 class AdventureListViewController: UIViewController, InputFormDelegate, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var adventureListTableView: UITableView!
+    @IBOutlet weak var adventureList: UITableView!
     @IBOutlet weak var addNewButton: UIButton!
     
     let adventureURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("adventure.plist")
@@ -70,25 +70,26 @@ class AdventureListViewController: UIViewController, InputFormDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return getAdventures().count
+        let numberOfRows = getAdventures().count
+        return numberOfRows
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: adventureCellId) as! AdventureTableViewCell
+        guard let cell = adventureList.dequeueReusableCell(withIdentifier: adventureCellId, for: indexPath) as? AdventureCell else {
+            return UITableViewCell()
+        }
         let date = String(describing: Date())
         let adventure = getAdventures()[indexPath.row]
-        cell.dateLabel.text = date
-        cell.adventureLabel.text = adventure.adventureStory
-//        cell?.configure(date: date, adventureName: adventure.adventureStory)
+        cell.configure(date: date, adventure: adventure.adventureStory)
         return cell
     }
     
     func configureTableView() {
-       
-        adventureListTabelView.register(AdventureTableViewCell.self, forCellReuseIdentifier: adventureCellId)
-        adventureListTabelView.dataSource = self
-        adventureListTabelView.delegate = self
+        let xib = UINib(nibName: "AdventureCell", bundle: nil)
+        adventureList.register(xib, forCellReuseIdentifier: adventureCellId)
+        adventureList.dataSource = self
+        adventureList.delegate = self
     }
 }
 
