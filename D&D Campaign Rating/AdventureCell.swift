@@ -13,8 +13,8 @@ class AdventureCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var adventureLabel: UILabel!
 
-    func configure(date: String, adventure: String) {
-        dateLabel.text = date
+    func configure(dateText: String, adventure: String) {
+        dateLabel.text = dateText
         adventureLabel.text = adventure
     }
 

@@ -57,14 +57,16 @@ class AdventureInputFormViewController: UIViewController {
     @IBAction func logAdventure(sender: UIBarButtonItem) {
         recordTextFieldText()
         let format = "EEEE, MMM d, yyyy"
-        let date = Date().getFormattedDate(format: format)
+        let date = Date()
+        let dateText = date.getFormattedDate(format: format)
         let adventure = Adventure(campaignTitle: campaignTitleText,
                                   adventureStory: adventureStoryText,
                                   characterName: characterNameText,
                                   characterType: characterTypeText,
                                   note: noteText,
                                   rating: ratingValue,
-                                  date: date)
+                                  playDateText: dateText,
+                                  adventureID: String(describing: date))
         delegate?.logAdventure(adventure: adventure)
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)

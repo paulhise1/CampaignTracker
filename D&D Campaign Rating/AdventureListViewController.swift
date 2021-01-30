@@ -14,7 +14,8 @@ struct Adventure: Codable {
     let characterType: String
     let note: String
     let rating: Float
-    let date: String
+    let playDateText: String
+    let adventureID: String
 }
 
 class AdventureListViewController: UIViewController, InputFormDelegate, UITableViewDelegate, UITableViewDataSource {
@@ -23,8 +24,12 @@ class AdventureListViewController: UIViewController, InputFormDelegate, UITableV
     @IBOutlet weak var adventureTableView: UITableView!
     @IBOutlet weak var addNewButton: UIButton!
     
+    var selectedAdventure: Adventure?
+    
     let adventureURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("adventure.plist")
     let adventureCellId = "adventureCell"
+    let recordAdventureSegue = "recordAdventureSegue"
+    let detailSegue = "detailSegue"
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,12 +37,29 @@ class AdventureListViewController: UIViewController, InputFormDelegate, UITableV
     }
     
     @IBAction func addNewButtonTapped(_ sender: Any) {
-        performSegue(withIdentifier: "recordAdventureSegue", sender: self)
+        performSegue(withIdentifier: recordAdventureSegue, sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationVC = segue.destination as? AdventureInputFormViewController
-        destinationVC?.delegate = self
+        if segue.identifier == detailSegue {
+            guard let adventure = selectedAdventure else {
+                return
+            }
+            guard let destinationVC = segue.destination as? AdventureDetailViewController else {
+                return
+            }
+            let character = adventure.characterName + " the " + adventure.characterType
+            let rating = "Rating: \(adventure.rating)"
+            destinationVC.configure(campaignTitle: adventure.campaignTitle,
+                                     adventureStory: adventure.adventureStory,
+                                     rating: rating,
+                                     storyLog: adventure.note,
+                                     character: character)
+        } else if segue.identifier == recordAdventureSegue {
+            let destinationVC = segue.destination as? AdventureInputFormViewController
+            destinationVC?.delegate = self
+        }
+        
     }
 
     func logAdventure(adventure: Adventure) {
@@ -82,8 +104,13 @@ class AdventureListViewController: UIViewController, InputFormDelegate, UITableV
             return UITableViewCell()
         }
         let adventure = getAdventures()[indexPath.row]
-        cell.configure(date: adventure.date, adventure: adventure.adventureStory)
+        cell.configure(dateText: adventure.playDateText, adventure: adventure.adventureStory)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedAdventure = getAdventures()[indexPath.row]
+        performSegue(withIdentifier: detailSegue , sender: self)
     }
     
     func configureTableView() {
