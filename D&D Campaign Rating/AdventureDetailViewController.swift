@@ -57,7 +57,7 @@ class AdventureDetailViewController: UIViewController {
         guard let adventureToEdit = self.adventure else {
             return
         }
-        destinationVC.configure(adventure: adventureToEdit)
+        destinationVC.configureForEdit(adventure: adventureToEdit)
     }
     
 }

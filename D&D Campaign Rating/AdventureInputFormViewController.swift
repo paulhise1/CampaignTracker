@@ -31,11 +31,7 @@ class AdventureInputFormViewController: UIViewController {
     var characterNameText: String = ""
     var characterTypeText: String = ""
     var noteText: String = ""
-    var ratingValue: Float = 3 {
-        didSet {
-            ratingValueLabel.text = String(ratingValue)
-        }
-    }
+    var ratingValue: Float = 3
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,13 +39,13 @@ class AdventureInputFormViewController: UIViewController {
         configureFormInputs()
     }
     
-    func configure(adventure: Adventure) {
+    func configureForEdit(adventure: Adventure) {
         self.campaignTitleText = adventure.campaignTitle
         self.adventureStoryText = adventure.adventureStory
         self.characterNameText = adventure.characterName
         self.characterTypeText = adventure.characterType
         self.noteText = adventure.note
-//        self.ratingValue = adventure.rating
+        self.ratingValue = adventure.rating
     }
     
     @IBAction func ratingSliderDidSlide(_ sender: UISlider) {
@@ -57,6 +53,7 @@ class AdventureInputFormViewController: UIViewController {
         let roundedValue = round(sender.value / step) * step
          sender.value = roundedValue
         ratingValue = sender.value
+        ratingValueLabel.text = String(describing: ratingValue)
     }
     
     @IBAction func cancelAndDismissView(sender: UIBarButtonItem) {
@@ -94,6 +91,7 @@ class AdventureInputFormViewController: UIViewController {
         ratingSlider.minimumValue = 1
         ratingSlider.maximumValue = 5
         ratingSlider.setValue(ratingValue, animated: false)
+        ratingValueLabel.text = String(describing: ratingValue)
     }
     
     func configureFormInputs() {
