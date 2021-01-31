@@ -26,7 +26,6 @@ class AdventureListViewController: UIViewController, InputFormDelegate, UITableV
     
     var selectedAdventure: Adventure?
     let adventureStore = AdventureStore()
-    let adventureURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("adventure.plist")
     let adventureCellId = "adventureCell"
     let recordAdventureSegue = "recordAdventureSegue"
     let detailSegue = "detailSegue"
@@ -57,12 +56,12 @@ class AdventureListViewController: UIViewController, InputFormDelegate, UITableV
     }
 
     func logAdventure(adventure: Adventure) {
-        adventureStore.saveAdventureToPlist(adventureURL: adventureURL, adventure: adventure)
+        adventureStore.saveAdventureToPlist(adventure: adventure)
         adventureTableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let numberOfRows = adventureStore.getAdventures(adventureURL: adventureURL).count
+        let numberOfRows = adventureStore.getAdventures().count
         return numberOfRows
     }
     
@@ -71,13 +70,13 @@ class AdventureListViewController: UIViewController, InputFormDelegate, UITableV
         guard let cell = adventureTableView.dequeueReusableCell(withIdentifier: adventureCellId, for: indexPath) as? AdventureCell else {
             return UITableViewCell()
         }
-        let adventure = adventureStore.getAdventures(adventureURL: adventureURL)[indexPath.row]
+        let adventure = adventureStore.getAdventures()[indexPath.row]
         cell.configure(dateText: adventure.playDateText, adventure: adventure.adventureStory)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedAdventure = adventureStore.getAdventures(adventureURL: adventureURL)[indexPath.row]
+        selectedAdventure = adventureStore.getAdventures()[indexPath.row]
         performSegue(withIdentifier: detailSegue , sender: self)
     }
     

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AdventureDetailViewController: UIViewController {
+class AdventureDetailViewController: UIViewController, InputFormDelegate {
     
     @IBOutlet weak var campaignTitleLabel: UILabel!
     @IBOutlet weak var adventureStoryLabel: UILabel!
@@ -25,11 +25,8 @@ class AdventureDetailViewController: UIViewController {
     let editFormSegueId = "editForm"
     
     override func viewDidLoad() {
-        campaignTitleLabel.text = campaignTitle
-        adventureStoryLabel.text = adventureStory
-        ratingLabel.text = rating
-        storyLogLabel.text = storyLog
-        characterLabel.text = character
+        configureLabels()
+        
     }
     
     func configure(adventure: Adventure) {
@@ -57,7 +54,19 @@ class AdventureDetailViewController: UIViewController {
         guard let adventureToEdit = self.adventure else {
             return
         }
+        destinationVC.delegate = self
         destinationVC.configureForEdit(adventure: adventureToEdit)
     }
     
+    func logAdventure(adventure: Adventure) {
+        AdventureStore().editAdventure(adventure: adventure)
+    }
+    
+    func configureLabels() {
+        campaignTitleLabel.text = campaignTitle
+        adventureStoryLabel.text = adventureStory
+        ratingLabel.text = rating
+        storyLogLabel.text = storyLog
+        characterLabel.text = character
+    }
 }
