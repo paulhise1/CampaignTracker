@@ -20,6 +20,9 @@ class AdventureDetailViewController: UIViewController {
     var rating = ""
     var storyLog = ""
     var character = ""
+    var adventure: Adventure?
+        
+    let editFormSegueId = "editForm"
     
     override func viewDidLoad() {
         campaignTitleLabel.text = campaignTitle
@@ -29,16 +32,13 @@ class AdventureDetailViewController: UIViewController {
         characterLabel.text = character
     }
     
-    func configure(campaignTitle: String,
-                   adventureStory: String,
-                   rating: String,
-                   storyLog: String,
-                   character: String) {
-        self.campaignTitle = campaignTitle
-        self.adventureStory = adventureStory
-        self.rating = rating
-        self.storyLog = storyLog
-        self.character = character
+    func configure(adventure: Adventure) {
+        self.adventure = adventure
+        self.campaignTitle = adventure.campaignTitle
+        self.adventureStory = adventure.adventureStory
+        self.rating = "Rating: \(adventure.rating)"
+        self.storyLog = adventure.note
+        self.character = adventure.characterName + " the " + adventure.characterType
     }
     
     @IBAction func cancelTapped(_ sender: Any) {
@@ -47,8 +47,17 @@ class AdventureDetailViewController: UIViewController {
     }
     
     @IBAction func editTapped(_ sender: Any) {
-        
+        performSegue(withIdentifier: editFormSegueId, sender: self)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let destinationVC = segue.destination as? AdventureInputFormViewController else {
+            return
+        }
+        guard let adventureToEdit = self.adventure else {
+            return
+        }
+        destinationVC.configure(adventure: adventureToEdit)
+    }
     
 }

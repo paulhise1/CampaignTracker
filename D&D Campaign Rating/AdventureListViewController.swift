@@ -25,7 +25,7 @@ class AdventureListViewController: UIViewController, InputFormDelegate, UITableV
     @IBOutlet weak var addNewButton: UIButton!
     
     var selectedAdventure: Adventure?
-    
+    let adventureStore = AdventureStore()
     let adventureURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("adventure.plist")
     let adventureCellId = "adventureCell"
     let recordAdventureSegue = "recordAdventureSegue"
@@ -48,13 +48,7 @@ class AdventureListViewController: UIViewController, InputFormDelegate, UITableV
             guard let destinationVC = segue.destination as? AdventureDetailViewController else {
                 return
             }
-            let character = adventure.characterName + " the " + adventure.characterType
-            let rating = "Rating: \(adventure.rating)"
-            destinationVC.configure(campaignTitle: adventure.campaignTitle,
-                                     adventureStory: adventure.adventureStory,
-                                     rating: rating,
-                                     storyLog: adventure.note,
-                                     character: character)
+            destinationVC.configure(adventure: adventure)
         } else if segue.identifier == recordAdventureSegue {
             let destinationVC = segue.destination as? AdventureInputFormViewController
             destinationVC?.delegate = self
@@ -63,38 +57,12 @@ class AdventureListViewController: UIViewController, InputFormDelegate, UITableV
     }
 
     func logAdventure(adventure: Adventure) {
-      saveAdventureToPlist(adventure: adventure)
+        adventureStore.saveAdventureToPlist(adventureURL: adventureURL, adventure: adventure)
         adventureTableView.reloadData()
     }
     
-    func getAdventures() -> [Adventure] {
-        let decoder = PropertyListDecoder()
-        print(adventureURL)
-        guard let data = try? Data(contentsOf: adventureURL),
-              let adventures = try? decoder.decode([Adventure].self, from: data) else {
-        return []
-        }
-        return adventures
-    }
-    
-    func saveAdventureToPlist(adventure: Adventure) {
-        let encoder = PropertyListEncoder()
-        encoder.outputFormat = .xml
-       
-        var adventures = getAdventures()
-        adventures.append(adventure)
-        
-        if let data = try? encoder.encode(adventures) {
-            if FileManager.default.fileExists(atPath: adventureURL.path) {
-                try? data.write(to: adventureURL)
-            } else {
-                FileManager.default.createFile(atPath: adventureURL.path, contents: data, attributes: nil)
-            }
-        }
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let numberOfRows = getAdventures().count
+        let numberOfRows = adventureStore.getAdventures(adventureURL: adventureURL).count
         return numberOfRows
     }
     
@@ -103,13 +71,13 @@ class AdventureListViewController: UIViewController, InputFormDelegate, UITableV
         guard let cell = adventureTableView.dequeueReusableCell(withIdentifier: adventureCellId, for: indexPath) as? AdventureCell else {
             return UITableViewCell()
         }
-        let adventure = getAdventures()[indexPath.row]
+        let adventure = adventureStore.getAdventures(adventureURL: adventureURL)[indexPath.row]
         cell.configure(dateText: adventure.playDateText, adventure: adventure.adventureStory)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedAdventure = getAdventures()[indexPath.row]
+        selectedAdventure = adventureStore.getAdventures(adventureURL: adventureURL)[indexPath.row]
         performSegue(withIdentifier: detailSegue , sender: self)
     }
     

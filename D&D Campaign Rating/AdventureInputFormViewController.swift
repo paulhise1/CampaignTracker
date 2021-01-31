@@ -40,6 +40,16 @@ class AdventureInputFormViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureRatingSlider()
+        configureFormInputs()
+    }
+    
+    func configure(adventure: Adventure) {
+        self.campaignTitleText = adventure.campaignTitle
+        self.adventureStoryText = adventure.adventureStory
+        self.characterNameText = adventure.characterName
+        self.characterTypeText = adventure.characterType
+        self.noteText = adventure.note
+//        self.ratingValue = adventure.rating
     }
     
     @IBAction func ratingSliderDidSlide(_ sender: UISlider) {
@@ -85,5 +95,12 @@ class AdventureInputFormViewController: UIViewController {
         ratingSlider.maximumValue = 5
         ratingSlider.setValue(ratingValue, animated: false)
     }
-        
+    
+    func configureFormInputs() {
+        campaignTitleTextField.text = campaignTitleText
+        adventureStoryTextField.text = adventureStoryText
+        characterNameTextField.text = characterNameText
+        characterTypeTextField.text = characterTypeText
+        noteTextField.text = noteText
+    }
 }

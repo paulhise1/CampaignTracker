@@ -315,6 +315,7 @@
                                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="4So-aZ-ceb">
                                             <connections>
                                                 <action selector="editTapped:" destination="zTr-re-2gA" id="2gi-3F-WxM"/>
+                                                <segue destination="9hO-fn-nMK" kind="presentation" identifier="editForm" id="vf4-Qf-QME"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -354,6 +355,9 @@
             <point key="canvasLocation" x="11.594202898550726" y="582.58928571428567"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="vf4-Qf-QME"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
