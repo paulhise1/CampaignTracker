@@ -18,7 +18,7 @@ struct Adventure: Codable {
     let adventureId: String
 }
 
-class AdventureListViewController: UIViewController, InputFormDelegate, UITableViewDelegate, UITableViewDataSource {
+class AdventureListViewController: UIViewController, InputFormDelegate, DetailsDelegate, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var adventureTableView: UITableView!
@@ -32,7 +32,7 @@ class AdventureListViewController: UIViewController, InputFormDelegate, UITableV
         
     override func viewDidLoad() {
         super.viewDidLoad()
-       configureTableView()
+        configureTableView()
     }
     
     @IBAction func addNewButtonTapped(_ sender: Any) {
@@ -48,6 +48,7 @@ class AdventureListViewController: UIViewController, InputFormDelegate, UITableV
                 return
             }
             destinationVC.configure(adventure: adventure)
+            destinationVC.delegate = self
         } else if segue.identifier == recordAdventureSegue {
             let destinationVC = segue.destination as? AdventureInputFormViewController
             destinationVC?.delegate = self
@@ -85,8 +86,10 @@ class AdventureListViewController: UIViewController, InputFormDelegate, UITableV
         adventureTableView.register(xib, forCellReuseIdentifier: adventureCellId)
         adventureTableView.dataSource = self
         adventureTableView.delegate = self
-        
-      
+    }
+    
+    func updateAdventuresIfNeeded() {
+        adventureTableView.reloadData()
     }
 }
 

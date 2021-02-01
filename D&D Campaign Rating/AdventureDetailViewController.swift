@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol DetailsDelegate: class {
+    func updateAdventuresIfNeeded()
+}
+
 class AdventureDetailViewController: UIViewController, InputFormDelegate {
+    
+    weak var delegate: DetailsDelegate?
     
     @IBOutlet weak var campaignTitleLabel: UILabel!
     @IBOutlet weak var adventureStoryLabel: UILabel!
@@ -26,7 +32,6 @@ class AdventureDetailViewController: UIViewController, InputFormDelegate {
     
     override func viewDidLoad() {
         configureLabels()
-        
     }
     
     func configure(adventure: Adventure) {
@@ -60,6 +65,9 @@ class AdventureDetailViewController: UIViewController, InputFormDelegate {
     
     func logAdventure(adventure: Adventure) {
         AdventureStore().editAdventure(adventure: adventure)
+        configure(adventure: adventure)
+        configureLabels()
+        delegate?.updateAdventuresIfNeeded()
     }
     
     func configureLabels() {
