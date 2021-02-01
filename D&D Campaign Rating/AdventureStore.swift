@@ -29,6 +29,16 @@ class AdventureStore {
         saveAdventuresToPlist(adventures: adventures)
     }
     
+    func deleteAdventure(adventure: Adventure) {
+        var adventures = getAdventures()
+        for (i, adv) in adventures.enumerated() {
+            if adv.adventureId == adventure.adventureId  {
+                adventures.remove(at: i)
+            }
+        }
+        saveAdventuresToPlist(adventures: adventures)
+    }
+    
     func getAdventures() -> [Adventure] {
         let decoder = PropertyListDecoder()
         print(adventureURL)

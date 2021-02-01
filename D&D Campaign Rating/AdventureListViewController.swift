@@ -81,6 +81,14 @@ class AdventureListViewController: UIViewController, InputFormDelegate, DetailsD
         performSegue(withIdentifier: detailSegue , sender: self)
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete{
+            let adventure = adventureStore.getAdventures()[indexPath.row]
+            adventureStore.deleteAdventure(adventure: adventure)
+            adventureTableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    
     func configureTableView() {
         let xib = UINib(nibName: "AdventureCell", bundle: nil)
         adventureTableView.register(xib, forCellReuseIdentifier: adventureCellId)

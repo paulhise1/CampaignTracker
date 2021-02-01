@@ -40,7 +40,7 @@ class AdventureDetailViewController: UIViewController, InputFormDelegate {
         self.adventure = adventure
         self.campaignTitle = adventure.campaignTitle
         self.adventureStory = adventure.adventureStory
-        self.rating = "Rating: \(adventure.rating)"
+        self.rating = String(describing: adventure.rating)
         self.storyLog = adventure.note
         self.character = adventure.characterName + " the " + adventure.characterType
         self.date = adventure.playDate
