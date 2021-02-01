@@ -12,8 +12,7 @@ protocol InputFormDelegate: class {
     func logAdventure(adventure: Adventure)
 }
 
-class AdventureInputFormViewController: UIViewController {
-
+class AdventureInputFormViewController: UIViewController, DatePickerDelegate {
     
     @IBOutlet weak var campaignTitleTextField: UITextField!
     @IBOutlet weak var adventureStoryTextField: UITextField!
@@ -23,6 +22,8 @@ class AdventureInputFormViewController: UIViewController {
     @IBOutlet weak var ratingSlider: UISlider!
     @IBOutlet weak var ratingValueLabel: UILabel!
     @IBOutlet weak var navigationBar: UINavigationBar!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var saveLogButton: UIBarButtonItem!
     
     weak var delegate: InputFormDelegate?
     
@@ -32,6 +33,9 @@ class AdventureInputFormViewController: UIViewController {
     var characterTypeText: String = ""
     var noteText: String = ""
     var ratingValue: Float = 3
+    var date: Date?
+    var adventureIdForEdit = ""
+    var isEdit = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +50,9 @@ class AdventureInputFormViewController: UIViewController {
         self.characterTypeText = adventure.characterType
         self.noteText = adventure.note
         self.ratingValue = adventure.rating
+        self.adventureIdForEdit = adventure.adventureId
+        self.date = adventure.playDate
+        self.isEdit = true
     }
     
     @IBAction func ratingSliderDidSlide(_ sender: UISlider) {
@@ -61,22 +68,41 @@ class AdventureInputFormViewController: UIViewController {
         dismiss(animated: true)
     }
     
-    @IBAction func logAdventure(sender: UIBarButtonItem) {
+    @IBAction func logOrEditAdventure(sender: UIBarButtonItem) {
         recordTextFieldText()
-        let format = "EEEE, MMM d, yyyy"
-        let date = Date()
-        let dateText = date.getFormattedDate(format: format)
+        
+        var adventureId: String
+        if sender.title == "Log"{
+            adventureId = String(describing: Date())
+        } else {
+            adventureId = adventureIdForEdit
+        }
+        guard let date = self.date else {
+            return
+        }
         let adventure = Adventure(campaignTitle: campaignTitleText,
                                   adventureStory: adventureStoryText,
                                   characterName: characterNameText,
                                   characterType: characterTypeText,
                                   note: noteText,
                                   rating: ratingValue,
-                                  playDateText: dateText,
-                                  adventureID: String(describing: date))
+                                  playDate: date,
+                                  adventureId: adventureId)
         delegate?.logAdventure(adventure: adventure)
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
+    }
+    
+    func dateOfPlaySet(date: Date) {
+        self.date = date
+        self.dateLabel.text = date.getDayAndMonth()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let destinationVC = segue.destination as? DatePickerViewController else {
+            return
+        }
+        destinationVC.delegate = self
     }
     
     func recordTextFieldText() {
@@ -100,5 +126,11 @@ class AdventureInputFormViewController: UIViewController {
         characterNameTextField.text = characterNameText
         characterTypeTextField.text = characterTypeText
         noteTextField.text = noteText
+        
+        if isEdit {
+            saveLogButton.title = "Save Edits"
+        } else {
+            saveLogButton.title = "Log"
+        }
     }
 }

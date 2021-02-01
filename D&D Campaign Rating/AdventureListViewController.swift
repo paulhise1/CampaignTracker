@@ -14,8 +14,8 @@ struct Adventure: Codable {
     let characterType: String
     let note: String
     let rating: Float
-    let playDateText: String
-    let adventureID: String
+    let playDate: Date
+    let adventureId: String
 }
 
 class AdventureListViewController: UIViewController, InputFormDelegate, UITableViewDelegate, UITableViewDataSource {
@@ -56,7 +56,7 @@ class AdventureListViewController: UIViewController, InputFormDelegate, UITableV
     }
 
     func logAdventure(adventure: Adventure) {
-        adventureStore.saveAdventureToPlist(adventure: adventure)
+        adventureStore.saveAdventure(adventure: adventure)
         adventureTableView.reloadData()
     }
     
@@ -71,7 +71,7 @@ class AdventureListViewController: UIViewController, InputFormDelegate, UITableV
             return UITableViewCell()
         }
         let adventure = adventureStore.getAdventures()[indexPath.row]
-        cell.configure(dateText: adventure.playDateText, adventure: adventure.adventureStory)
+        cell.configure(dateText: adventure.playDate.getDayAndMonth(), adventure: adventure.adventureStory)
         return cell
     }
     
