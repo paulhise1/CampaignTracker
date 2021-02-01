@@ -16,10 +16,11 @@ class AdventureDetailViewController: UIViewController, InputFormDelegate {
     weak var delegate: DetailsDelegate?
     
     @IBOutlet weak var campaignTitleLabel: UILabel!
-    @IBOutlet weak var adventureStoryLabel: UILabel!
+    @IBOutlet weak var datePlayedLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var storyLogLabel: UILabel!
     @IBOutlet weak var characterLabel: UILabel!
+    @IBOutlet weak var navBarTitle: UINavigationItem!
     
     var campaignTitle = ""
     var adventureStory = ""
@@ -27,6 +28,7 @@ class AdventureDetailViewController: UIViewController, InputFormDelegate {
     var storyLog = ""
     var character = ""
     var adventure: Adventure?
+    var date: Date?
         
     let editFormSegueId = "editForm"
     
@@ -41,6 +43,7 @@ class AdventureDetailViewController: UIViewController, InputFormDelegate {
         self.rating = "Rating: \(adventure.rating)"
         self.storyLog = adventure.note
         self.character = adventure.characterName + " the " + adventure.characterType
+        self.date = adventure.playDate
     }
     
     @IBAction func cancelTapped(_ sender: Any) {
@@ -71,8 +74,9 @@ class AdventureDetailViewController: UIViewController, InputFormDelegate {
     }
     
     func configureLabels() {
+        navBarTitle.title = adventureStory
         campaignTitleLabel.text = campaignTitle
-        adventureStoryLabel.text = adventureStory
+        datePlayedLabel.text = date?.getDayAndMonth()
         ratingLabel.text = rating
         storyLogLabel.text = storyLog
         characterLabel.text = character

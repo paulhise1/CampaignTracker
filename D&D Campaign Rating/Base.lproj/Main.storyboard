@@ -326,20 +326,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Campaign Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gFE-oM-QWm">
-                                <rect key="frame" x="10" y="76" width="114.5" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adventure Story" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A7c-Zn-pem">
-                                <rect key="frame" x="10" y="121.5" width="123" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Played" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A7c-Zn-pem">
+                                <rect key="frame" x="10" y="81" width="91" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="nGU-He-A8l" userLabel="Note &amp; Rating">
-                                <rect key="frame" x="0.0" y="167" width="414" height="81.5"/>
+                                <rect key="frame" x="0.0" y="162.5" width="414" height="81.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Story Log" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="euU-lj-eZV">
                                         <rect key="frame" x="20" y="10" width="200" height="20.5"/>
@@ -366,7 +360,6 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="ZLF-OL-Py9" secondAttribute="trailing" constant="10" id="7HW-41-FXE"/>
                                     <constraint firstItem="ZLF-OL-Py9" firstAttribute="leading" secondItem="nGU-He-A8l" secondAttribute="leading" constant="20" id="GTu-mw-Srb"/>
@@ -380,7 +373,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Character and Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fow-N2-Ijb">
-                                <rect key="frame" x="10" y="273.5" width="150" height="20.5"/>
+                                <rect key="frame" x="10" y="269" width="150" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -405,16 +398,23 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Campaign Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gFE-oM-QWm">
+                                <rect key="frame" x="10" y="122" width="114.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pab-TE-1d1"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="gFE-oM-QWm" firstAttribute="top" secondItem="A7c-Zn-pem" secondAttribute="bottom" constant="20" id="0ef-fC-7ny"/>
                             <constraint firstItem="pab-TE-1d1" firstAttribute="top" secondItem="RfQ-Re-eAi" secondAttribute="top" id="1rS-VH-LZh"/>
                             <constraint firstItem="pab-TE-1d1" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="gFE-oM-QWm" secondAttribute="trailing" symbolic="YES" id="7fn-VF-406"/>
                             <constraint firstItem="nGU-He-A8l" firstAttribute="centerX" secondItem="pab-TE-1d1" secondAttribute="centerX" id="Cy1-2l-JcI"/>
-                            <constraint firstItem="A7c-Zn-pem" firstAttribute="top" secondItem="gFE-oM-QWm" secondAttribute="bottom" constant="25" id="DTR-BL-eqB"/>
+                            <constraint firstItem="A7c-Zn-pem" firstAttribute="top" secondItem="RfQ-Re-eAi" secondAttribute="bottom" constant="25" id="DTR-BL-eqB"/>
                             <constraint firstItem="fow-N2-Ijb" firstAttribute="top" secondItem="nGU-He-A8l" secondAttribute="bottom" constant="25" id="IcL-9D-4Ih"/>
-                            <constraint firstItem="gFE-oM-QWm" firstAttribute="top" secondItem="RfQ-Re-eAi" secondAttribute="bottom" constant="20" id="IlF-Tl-ce6"/>
+                            <constraint firstItem="nGU-He-A8l" firstAttribute="top" secondItem="gFE-oM-QWm" secondAttribute="bottom" constant="20" id="LAa-Gl-rri"/>
                             <constraint firstItem="pab-TE-1d1" firstAttribute="trailing" secondItem="RfQ-Re-eAi" secondAttribute="trailing" id="OWO-EM-TaM"/>
                             <constraint firstItem="A7c-Zn-pem" firstAttribute="leading" secondItem="pab-TE-1d1" secondAttribute="leading" constant="10" id="Ph3-zJ-Iyw"/>
                             <constraint firstItem="fow-N2-Ijb" firstAttribute="leading" secondItem="pab-TE-1d1" secondAttribute="leading" constant="10" id="VfI-im-OTa"/>
@@ -423,13 +423,13 @@
                             <constraint firstItem="nGU-He-A8l" firstAttribute="width" secondItem="frM-od-Tl0" secondAttribute="width" id="eJn-Na-OyT"/>
                             <constraint firstItem="RfQ-Re-eAi" firstAttribute="leading" secondItem="pab-TE-1d1" secondAttribute="leading" id="pF7-G3-t9s"/>
                             <constraint firstItem="pab-TE-1d1" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="A7c-Zn-pem" secondAttribute="trailing" symbolic="YES" id="te9-H6-6ZH"/>
-                            <constraint firstItem="nGU-He-A8l" firstAttribute="top" secondItem="A7c-Zn-pem" secondAttribute="bottom" constant="25" id="tyQ-zK-z9l"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="adventureStoryLabel" destination="A7c-Zn-pem" id="enj-Lo-bgy"/>
                         <outlet property="campaignTitleLabel" destination="gFE-oM-QWm" id="MMq-RI-d2Y"/>
                         <outlet property="characterLabel" destination="fow-N2-Ijb" id="p0f-6t-MAq"/>
+                        <outlet property="datePlayedLabel" destination="A7c-Zn-pem" id="enj-Lo-bgy"/>
+                        <outlet property="navBarTitle" destination="XuS-Vq-lN0" id="uiZ-gH-IhS"/>
                         <outlet property="ratingLabel" destination="Scg-z6-A6f" id="QXz-P6-1nF"/>
                         <outlet property="storyLogLabel" destination="ZLF-OL-Py9" id="P6i-pq-8qy"/>
                     </connections>

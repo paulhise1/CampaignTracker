@@ -126,6 +126,7 @@ class AdventureInputFormViewController: UIViewController, DatePickerDelegate {
         characterNameTextField.text = characterNameText
         characterTypeTextField.text = characterTypeText
         noteTextField.text = noteText
+        dateLabel.text = date?.getDayAndMonth()
         
         if isEdit {
             saveLogButton.title = "Save Edits"
