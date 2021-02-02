@@ -361,13 +361,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Scg-z6-A6f">
-                                        <rect key="frame" x="40" y="-86.5" width="334" height="21.5"/>
+                                        <rect key="frame" x="40" y="-81.5" width="334" height="21.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="JMl-yS-rTp">
-                                        <rect key="frame" x="379" y="-88.5" width="25" height="25"/>
+                                        <rect key="frame" x="379" y="-84" width="25" height="25"/>
                                         <color key="tintColor" red="0.8928143462" green="0.68405979819999996" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="4pn-XC-FTD"/>
@@ -377,7 +377,6 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="ZLF-OL-Py9" secondAttribute="trailing" constant="20" id="7HW-41-FXE"/>
-                                    <constraint firstItem="euU-lj-eZV" firstAttribute="top" secondItem="Scg-z6-A6f" secondAttribute="bottom" constant="75" id="BgZ-Zl-Fdc"/>
                                     <constraint firstItem="ZLF-OL-Py9" firstAttribute="leading" secondItem="nGU-He-A8l" secondAttribute="leading" constant="20" id="GTu-mw-Srb"/>
                                     <constraint firstItem="euU-lj-eZV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="nGU-He-A8l" secondAttribute="leading" constant="20" symbolic="YES" id="Mf4-YR-dc5"/>
                                     <constraint firstItem="ZLF-OL-Py9" firstAttribute="top" secondItem="euU-lj-eZV" secondAttribute="bottom" constant="10" id="Nbe-ZK-UlX"/>
@@ -438,6 +437,7 @@
                             <constraint firstItem="fow-N2-Ijb" firstAttribute="leading" secondItem="pab-TE-1d1" secondAttribute="leading" constant="20" id="VfI-im-OTa"/>
                             <constraint firstItem="pab-TE-1d1" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fow-N2-Ijb" secondAttribute="trailing" symbolic="YES" id="Z2p-ix-luH"/>
                             <constraint firstItem="gFE-oM-QWm" firstAttribute="leading" secondItem="pab-TE-1d1" secondAttribute="leading" constant="20" id="dSb-JR-aCp"/>
+                            <constraint firstItem="Scg-z6-A6f" firstAttribute="centerY" secondItem="A7c-Zn-pem" secondAttribute="centerY" id="eHd-1i-iF0"/>
                             <constraint firstItem="nGU-He-A8l" firstAttribute="width" secondItem="frM-od-Tl0" secondAttribute="width" id="eJn-Na-OyT"/>
                             <constraint firstItem="pab-TE-1d1" firstAttribute="trailing" secondItem="JMl-yS-rTp" secondAttribute="trailing" constant="10" id="oyN-Ll-cDy"/>
                             <constraint firstItem="RfQ-Re-eAi" firstAttribute="leading" secondItem="pab-TE-1d1" secondAttribute="leading" id="pF7-G3-t9s"/>
@@ -458,7 +458,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="zaN-pF-Wgc"/>
+        <segue reference="vf4-Qf-QME"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="calendar.badge.plus" catalog="system" width="128" height="108"/>
