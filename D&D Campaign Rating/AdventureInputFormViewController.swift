@@ -77,16 +77,14 @@ class AdventureInputFormViewController: UIViewController, DatePickerDelegate {
         } else {
             adventureId = adventureIdForEdit
         }
-        guard let date = self.date else {
-            return
-        }
+
         let adventure = Adventure(campaignTitle: campaignTitleText,
                                   adventureStory: adventureStoryText,
                                   characterName: characterNameText,
                                   characterType: characterTypeText,
                                   note: noteText,
                                   rating: ratingValue,
-                                  playDate: date,
+                                  playDate: date ?? Date(),
                                   adventureId: adventureId)
         delegate?.logAdventure(adventure: adventure)
         navigationController?.popViewController(animated: true)

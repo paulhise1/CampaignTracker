@@ -22,7 +22,11 @@ class AdventureListViewController: UIViewController, InputFormDelegate, DetailsD
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var adventureTableView: UITableView!
-    @IBOutlet weak var addNewButton: UIButton!
+    @IBOutlet weak var addNewButton: UIButton! {
+        didSet {
+            addNewButton.layer.cornerRadius = 10
+        }
+    }
     
     var selectedAdventure: Adventure?
     let adventureStore = AdventureStore()
