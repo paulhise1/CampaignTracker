@@ -12,13 +12,13 @@ protocol InputFormDelegate: class {
     func logAdventure(adventure: Adventure)
 }
 
-class AdventureInputFormViewController: UIViewController, DatePickerDelegate {
+class AdventureInputFormViewController: UIViewController, DatePickerDelegate, UITextFieldDelegate, UITextViewDelegate {
     
     @IBOutlet weak var campaignTitleTextField: UITextField!
     @IBOutlet weak var adventureStoryTextField: UITextField!
     @IBOutlet weak var characterNameTextField: UITextField!
     @IBOutlet weak var characterTypeTextField: UITextField!
-    @IBOutlet weak var noteTextField: UITextField!
+    @IBOutlet weak var noteTextView: UITextView!
     @IBOutlet weak var ratingSlider: UISlider!
     @IBOutlet weak var ratingValueLabel: UILabel!
     @IBOutlet weak var navigationBar: UINavigationBar!
@@ -41,6 +41,7 @@ class AdventureInputFormViewController: UIViewController, DatePickerDelegate {
         super.viewDidLoad()
         configureRatingSlider()
         configureFormInputs()
+        createToolBar()
     }
     
     func configureForEdit(adventure: Adventure) {
@@ -108,7 +109,7 @@ class AdventureInputFormViewController: UIViewController, DatePickerDelegate {
         adventureStoryText = adventureStoryTextField.text ?? ""
         characterNameText = characterNameTextField.text ?? ""
         characterTypeText = characterTypeTextField.text ?? ""
-        noteText = noteTextField.text ?? ""
+        noteText = noteTextView.text ?? ""
     }
     
     func configureRatingSlider() {
@@ -119,11 +120,26 @@ class AdventureInputFormViewController: UIViewController, DatePickerDelegate {
     }
     
     func configureFormInputs() {
+        campaignTitleTextField.delegate = self
         campaignTitleTextField.text = campaignTitleText
+        campaignTitleTextField.returnKeyType = .done
+        
+        adventureStoryTextField.delegate = self
         adventureStoryTextField.text = adventureStoryText
+        adventureStoryTextField.returnKeyType = .done
+        
+        characterNameTextField.delegate = self
         characterNameTextField.text = characterNameText
+        characterNameTextField.returnKeyType = .done
+        
+        characterTypeTextField.delegate = self
         characterTypeTextField.text = characterTypeText
-        noteTextField.text = noteText
+        characterTypeTextField.returnKeyType = .done
+        
+        noteTextView.delegate = self
+        noteTextView.text = noteText
+        noteTextView.returnKeyType = .default
+        
         dateLabel.text = date?.getDayAndMonth()
         
         if isEdit {
@@ -131,5 +147,25 @@ class AdventureInputFormViewController: UIViewController, DatePickerDelegate {
         } else {
             saveLogButton.title = "Log"
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func createToolBar() {
+        let toolbar = UIToolbar()
+        toolbar.barStyle = UIBarStyle.default
+        toolbar.sizeToFit()
+        let flexButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(hideKeyboard))
+        
+        toolbar.items = [flexButton, doneButton]
+        noteTextView.inputAccessoryView = toolbar
+    }
+    
+    @objc func hideKeyboard() {
+        noteTextView.resignFirstResponder()
     }
 }
