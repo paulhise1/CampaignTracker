@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yDo-mT-PxR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yDo-mT-PxR">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -79,11 +79,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BJe-OI-d5R">
-                                <rect key="frame" x="20" y="48" width="374" height="760"/>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vPl-YI-DpU">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                                <items>
+                                    <navigationItem title="Record Adventure" id="4Bp-wd-MIn">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="y5Z-Ef-WAx">
+                                            <color key="tintColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <connections>
+                                                <action selector="cancelAndDismissViewWithSender:" destination="9hO-fn-nMK" id="fzh-NK-xAm"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Log" id="gqg-yt-F4A">
+                                            <color key="tintColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <connections>
+                                                <action selector="logOrEditAdventureWithSender:" destination="9hO-fn-nMK" id="pSb-xA-XfR"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uG5-zs-XCt">
+                                <rect key="frame" x="0.0" y="56" width="414" height="752"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" placeholderIntrinsicWidth="374" placeholderIntrinsicHeight="778" translatesAutoresizingMaskIntoConstraints="NO" id="puC-SZ-PrX" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="778"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="778"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FdZ-Pm-0fM" userLabel="Calender Button">
                                                 <rect key="frame" x="20" y="51.5" width="34.5" height="29"/>
@@ -130,7 +149,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CIn-vm-LBM" userLabel="Character Name Text Field">
-                                                <rect key="frame" x="20" y="289.5" width="334" height="34"/>
+                                                <rect key="frame" x="20" y="289.5" width="374" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -141,7 +160,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b6p-Zu-Frq" userLabel="Character Type Text Field">
-                                                <rect key="frame" x="20" y="369.5" width="334" height="34"/>
+                                                <rect key="frame" x="20" y="369.5" width="374" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -152,11 +171,11 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QMD-H5-zGC" userLabel="Note Text Border View">
-                                                <rect key="frame" x="19" y="448.5" width="336" height="102"/>
+                                                <rect key="frame" x="19" y="448.5" width="376" height="102"/>
                                                 <color key="backgroundColor" systemColor="systemGray4Color"/>
                                             </view>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eFw-3s-Qoy">
-                                                <rect key="frame" x="20" y="449.5" width="334" height="100"/>
+                                                <rect key="frame" x="20" y="449.5" width="374" height="100"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="pYi-fc-VvS"/>
@@ -172,20 +191,20 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="jvI-Er-jeC">
-                                                <rect key="frame" x="18" y="595.5" width="338" height="31"/>
+                                                <rect key="frame" x="18" y="595.5" width="378" height="31"/>
                                                 <color key="tintColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <connections>
                                                     <action selector="ratingSliderDidSlide:" destination="9hO-fn-nMK" eventType="valueChanged" id="pfZ-Hz-Jbk"/>
                                                 </connections>
                                             </slider>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vo7-Ak-m4n" userLabel="Rating Value Label">
-                                                <rect key="frame" x="302" y="574.5" width="24" height="21"/>
+                                                <rect key="frame" x="342" y="574.5" width="24" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="p8p-su-PvH">
-                                                <rect key="frame" x="329" y="572" width="25" height="25"/>
+                                                <rect key="frame" x="369" y="572" width="25" height="25"/>
                                                 <color key="tintColor" red="0.8928143462" green="0.68405979819999996" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="ci3-c4-9XH"/>
@@ -193,12 +212,12 @@
                                                 </constraints>
                                             </imageView>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="upT-7N-SEh" userLabel="Campaign Title Text Field">
-                                                <rect key="frame" x="20" y="130" width="334" height="34"/>
+                                                <rect key="frame" x="20" y="130" width="374" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="41w-OS-qUW" userLabel="Adventure Story Text Field">
-                                                <rect key="frame" x="20" y="210" width="334" height="34"/>
+                                                <rect key="frame" x="20" y="210" width="374" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -229,6 +248,7 @@
                                             <constraint firstItem="OIv-qf-oqE" firstAttribute="leading" secondItem="upT-7N-SEh" secondAttribute="leading" id="TeT-hQ-ijC"/>
                                             <constraint firstItem="06h-UQ-D5P" firstAttribute="bottom" secondItem="CIn-vm-LBM" secondAttribute="top" id="V6A-7x-1i0"/>
                                             <constraint firstItem="NjZ-WS-06X" firstAttribute="centerY" secondItem="FdZ-Pm-0fM" secondAttribute="centerY" id="VIl-Jc-XrC"/>
+                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="jvI-Er-jeC" secondAttribute="bottom" constant="5" id="W86-CV-X4Z"/>
                                             <constraint firstItem="p8p-su-PvH" firstAttribute="centerY" secondItem="Vo7-Ak-m4n" secondAttribute="centerY" id="WUV-5d-nss"/>
                                             <constraint firstItem="CIn-vm-LBM" firstAttribute="trailing" secondItem="eFw-3s-Qoy" secondAttribute="trailing" id="XYm-yC-dFJ"/>
                                             <constraint firstItem="06h-UQ-D5P" firstAttribute="leading" secondItem="41w-OS-qUW" secondAttribute="leading" id="YxL-Nv-wiM"/>
@@ -259,45 +279,25 @@
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="puC-SZ-PrX" firstAttribute="trailing" secondItem="ccp-6l-lAh" secondAttribute="trailing" id="3Mm-Ow-R0s"/>
-                                    <constraint firstItem="puC-SZ-PrX" firstAttribute="top" secondItem="ccp-6l-lAh" secondAttribute="top" id="Dnu-Gx-2dY"/>
-                                    <constraint firstItem="puC-SZ-PrX" firstAttribute="bottom" secondItem="ccp-6l-lAh" secondAttribute="bottom" id="fkF-3V-MC9"/>
-                                    <constraint firstItem="puC-SZ-PrX" firstAttribute="leading" secondItem="ccp-6l-lAh" secondAttribute="leading" id="hSB-cV-YGt"/>
-                                    <constraint firstItem="puC-SZ-PrX" firstAttribute="width" secondItem="BJe-OI-d5R" secondAttribute="width" id="njE-0G-1z9"/>
-                                    <constraint firstItem="puC-SZ-PrX" firstAttribute="width" secondItem="aMV-Ab-8XZ" secondAttribute="width" id="yuZ-yo-eX4"/>
+                                    <constraint firstItem="puC-SZ-PrX" firstAttribute="width" secondItem="ikj-dA-T2G" secondAttribute="width" id="6W0-Aq-KC0"/>
+                                    <constraint firstItem="puC-SZ-PrX" firstAttribute="top" secondItem="HBs-fx-0rh" secondAttribute="top" id="Fwa-L4-sSK"/>
+                                    <constraint firstItem="puC-SZ-PrX" firstAttribute="trailing" secondItem="HBs-fx-0rh" secondAttribute="trailing" id="bab-Tk-cpy"/>
+                                    <constraint firstItem="puC-SZ-PrX" firstAttribute="bottom" secondItem="HBs-fx-0rh" secondAttribute="bottom" id="iDa-Dz-fQq"/>
+                                    <constraint firstItem="puC-SZ-PrX" firstAttribute="leading" secondItem="HBs-fx-0rh" secondAttribute="leading" id="wzg-YF-75B"/>
                                 </constraints>
-                                <viewLayoutGuide key="contentLayoutGuide" id="ccp-6l-lAh"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="aMV-Ab-8XZ"/>
+                                <viewLayoutGuide key="contentLayoutGuide" id="HBs-fx-0rh"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="ikj-dA-T2G"/>
                             </scrollView>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vPl-YI-DpU">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
-                                <items>
-                                    <navigationItem title="Record Adventure" id="4Bp-wd-MIn">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="y5Z-Ef-WAx">
-                                            <color key="tintColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <connections>
-                                                <action selector="cancelAndDismissViewWithSender:" destination="9hO-fn-nMK" id="fzh-NK-xAm"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Log" id="gqg-yt-F4A">
-                                            <color key="tintColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <connections>
-                                                <action selector="logOrEditAdventureWithSender:" destination="9hO-fn-nMK" id="pSb-xA-XfR"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Vyd-hs-sHo"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="BJe-OI-d5R" firstAttribute="top" secondItem="vPl-YI-DpU" secondAttribute="bottomMargin" id="BZn-XW-cnI"/>
-                            <constraint firstItem="BJe-OI-d5R" firstAttribute="leading" secondItem="Umu-Ne-CB2" secondAttribute="leadingMargin" id="DRN-YH-qlq"/>
                             <constraint firstItem="Vyd-hs-sHo" firstAttribute="trailing" secondItem="vPl-YI-DpU" secondAttribute="trailing" id="F7V-Ii-4JW"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="BJe-OI-d5R" secondAttribute="trailing" id="G4B-OH-bXy"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="BJe-OI-d5R" secondAttribute="bottom" id="RHh-9G-UN5"/>
+                            <constraint firstItem="uG5-zs-XCt" firstAttribute="leading" secondItem="Vyd-hs-sHo" secondAttribute="leading" id="R8Z-LF-d6l"/>
                             <constraint firstItem="vPl-YI-DpU" firstAttribute="leading" secondItem="Vyd-hs-sHo" secondAttribute="leading" id="U7a-zE-2pZ"/>
+                            <constraint firstItem="Vyd-hs-sHo" firstAttribute="bottom" secondItem="uG5-zs-XCt" secondAttribute="bottom" id="VJm-es-s4e"/>
+                            <constraint firstItem="uG5-zs-XCt" firstAttribute="top" secondItem="vPl-YI-DpU" secondAttribute="bottom" id="XQj-cK-cfH"/>
+                            <constraint firstItem="Vyd-hs-sHo" firstAttribute="trailing" secondItem="uG5-zs-XCt" secondAttribute="trailing" id="f1a-d6-mNW"/>
                             <constraint firstItem="vPl-YI-DpU" firstAttribute="top" secondItem="Vyd-hs-sHo" secondAttribute="top" id="js4-lj-RGo"/>
                         </constraints>
                     </view>
@@ -312,6 +312,7 @@
                         <outlet property="ratingSlider" destination="jvI-Er-jeC" id="vbO-vs-v2m"/>
                         <outlet property="ratingValueLabel" destination="Vo7-Ak-m4n" id="oSd-JD-Pld"/>
                         <outlet property="saveLogButton" destination="gqg-yt-F4A" id="c9P-f4-Pc0"/>
+                        <outlet property="scrollView" destination="uG5-zs-XCt" id="spU-uL-nII"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0AJ-XU-Mgg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

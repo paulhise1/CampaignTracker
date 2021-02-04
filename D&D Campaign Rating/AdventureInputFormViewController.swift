@@ -24,7 +24,8 @@ class AdventureInputFormViewController: UIViewController, DatePickerDelegate, UI
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var saveLogButton: UIBarButtonItem!
-    
+    @IBOutlet weak var scrollView: UIScrollView!
+
     weak var delegate: InputFormDelegate?
     
     var campaignTitleText: String = ""
@@ -42,6 +43,7 @@ class AdventureInputFormViewController: UIViewController, DatePickerDelegate, UI
         configureRatingSlider()
         configureFormInputs()
         createToolBar()
+        observeKeyboard()
     }
     
     func configureForEdit(adventure: Adventure) {
@@ -147,6 +149,27 @@ class AdventureInputFormViewController: UIViewController, DatePickerDelegate, UI
         } else {
             saveLogButton.title = "Log"
         }
+    }
+
+    func observeKeyboard() {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+    }
+
+    @objc func adjustForKeyboard(notification: Notification) {
+        guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+
+        let keyboardScreenEndFrame = keyboardValue.cgRectValue
+        let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
+
+        if notification.name == UIResponder.keyboardWillHideNotification {
+            scrollView.contentInset = .zero
+        } else {
+            scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height - view.safeAreaInsets.bottom, right: 0)
+        }
+
+        scrollView.scrollIndicatorInsets = scrollView.contentInset
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
